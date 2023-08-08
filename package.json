@@ -1,10 +1,11 @@
 {
   "name": "unplugin-vue-armor",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "",
   "scripts": {
     "build": "tsup && esno scripts/postbuild.ts",
-    "dev": "tsup --watch"
+    "dev": "tsup --watch",
+    "release": "bumpp"
   },
   "keywords": [],
   "author": "",
