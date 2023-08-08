@@ -24,11 +24,6 @@
       "require": "./dist/webpack.js",
       "import": "./dist/webpack.mjs"
     },
-    "./esbuild": {
-      "types": "./dist/esbuild.d.ts",
-      "require": "./dist/esbuild.js",
-      "import": "./dist/esbuild.mjs"
-    },
     "./rollup": {
       "types": "./dist/rollup.d.ts",
       "require": "./dist/rollup.js",
