@@ -1,4 +1,8 @@
-<script style='./styles/app.css' setup lang="ts">
+<script setup
+ lang="ts"
+ style='./styles/app.css'
+ name="HelloApp"
+ >
 import HelloWorld from './components/HelloWorld.vue'
 </script>
 
