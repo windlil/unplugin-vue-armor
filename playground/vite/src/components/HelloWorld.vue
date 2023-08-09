@@ -5,6 +5,10 @@
 >
 import { ref } from 'vue'
 
+defineOptions({
+  name: 'abcd'
+})
+
 defineProps<{ msg: string }>()
 
 const count = ref(0)
