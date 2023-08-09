@@ -87,3 +87,17 @@ style:
 
   <style scoped src="./styles/index.css"></style>
   ```
+
+template:
+- Use `template` to import template.
+
+  It will automatically turn this
+  ```vue
+  <script template="./index.html"></script>
+  ```
+  into this
+  ```vue
+  <script setup></script>
+
+  <template src="./index.html"></template>
+  ```
