@@ -101,3 +101,6 @@ template:
 
   <template src="./index.html"></template>
   ```
+
+## License
+MIT
