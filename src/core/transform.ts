@@ -1,4 +1,4 @@
-import { nameReg, stylePathReg } from './reg'
+import { nameReg, stylePathReg, templateReg } from './reg'
 
 export function transformCode(code: string, scriptElString: string, type: number): string {
   switch (type) {
@@ -8,11 +8,14 @@ export function transformCode(code: string, scriptElString: string, type: number
     case 1:
       code = transformName(scriptElString, code)
       break
+    case 2:
+      code = transformTemplate(scriptElString, code)
+      break
   }
   return code
 }
 
-function transformStyle(scriptElString, code): string {
+function transformStyle(scriptElString: string, code: string): string {
   const initScriptString = scriptElString
   let styleString = ''
   const stylePath = stylePathReg.exec(scriptElString)
@@ -24,7 +27,7 @@ function transformStyle(scriptElString, code): string {
   return code + styleString
 }
 
-function transformName(scriptElString, code): string {
+function transformName(scriptElString: string, code: string): string {
   const initScriptString = scriptElString
   let name
   const namePath = nameReg.exec(scriptElString)
@@ -39,4 +42,16 @@ function transformName(scriptElString, code): string {
     code = code.replace(initScriptString, scriptElString)
   }
   return code
+}
+
+function transformTemplate(scriptElString: string, code: string) {
+  const initScriptString = scriptElString
+  let templateString = ''
+  const templatePath = templateReg.exec(scriptElString)
+  if (templatePath) {
+    scriptElString = scriptElString.replace(templatePath[0], '')
+    code = code.replace(initScriptString, scriptElString)
+    templateString = `\n<template src=${templatePath[1]}></template>`
+  }
+  return code + templateString
 }

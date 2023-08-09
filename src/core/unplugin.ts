@@ -1,7 +1,7 @@
 import { createUnplugin } from 'unplugin'
 import { createFilter } from '@rollup/pluginutils'
 import { transformCode } from './transform'
-import { nameExistReg, styleExistReg } from './reg'
+import { nameExistReg, styleExistReg, templateExistReg } from './reg'
 import { TransformType } from './typs'
 
 export default createUnplugin(() => {
@@ -19,9 +19,14 @@ export default createUnplugin(() => {
       const styleElString = code.match(styleExistReg)
       if (styleElString)
         code = transformCode(code, styleElString[0], TransformType.STYLE)
+
       const nameElstring = code.match(nameExistReg)
       if (nameElstring)
         code = transformCode(code, nameElstring[0], TransformType.NAME)
+
+      const templateElstring = code.match(templateExistReg)
+      if (templateElstring)
+        code = transformCode(code, templateElstring[0], TransformType.TEMPLATE)
       return code
     },
   }
